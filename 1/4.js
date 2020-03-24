@@ -13,7 +13,7 @@ let handler = (req, res) => {
     });
   }
   else {
-    res.end(`You made a ${req.method} request! But you should to do POST request`);
+    res.end('Is not a POST method');
   }
 };
 

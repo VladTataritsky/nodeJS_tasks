@@ -43,7 +43,7 @@ let handler = ((req, res) => {
     })
   } else {
       res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
-      console.log('err');
+      res.end('for other http-mathods not so')
   }
 });
 let server = http.createServer();
