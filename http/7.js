@@ -26,6 +26,6 @@ let handler = ((req, res) => {
 });
 let server = http.createServer();
 
-server.listen(40001, "127.0.0.1", () => {
+server.listen(40001, "localhost", () => {
   console.log("Сервер начал прослушивание запросов на порту 40001");
 }).on('request', handler);
