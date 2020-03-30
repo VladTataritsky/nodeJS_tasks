@@ -60,7 +60,7 @@ let handler = (req, res) => {
 };
 
 server.on("request", handler);
-server.listen(40001, "localhost", () => {
+server.listen(40001, "127.0.0.http", () => {
   console.log("Сервер начал прослушивание запросов на порту 40001");
 });
 

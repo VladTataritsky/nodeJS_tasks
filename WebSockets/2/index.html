@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSockets</title>
+</head>
+<body>
+<script>
+  const socket = new WebSocket("ws:/localhost:4000/wsserver");
+
+  socket.onopen = () => {
+    socket.onmessage = e => {
+      if (e.data.indexOf("Clients quantity") !== -1) {
+        document.documentElement.innerHTML =`<h2>${e.data}</h2>`;
+      }
+    };
+  }
+</script>
+</body>
+</html>
+

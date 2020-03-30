@@ -4,7 +4,7 @@ const fs = require('fs');
 http.createServer((req, res) => {
   if (req.method === 'GET' && req.url === '/download/ffff.xxx') {
     fs.readFile(`.${req.url}`, (err, content) => {
-      res.setHeader("Content-disposition", "attachment; filename=file.txt");
+      res.setHeader("Content-disposition", "attachment; filename=myFile.txt");
       res.end(content);
     })
   } else {
