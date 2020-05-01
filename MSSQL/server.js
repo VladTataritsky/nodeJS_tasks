@@ -20,13 +20,22 @@ const tableNames = {
 
 const server = http.createServer((req, res) => {
 
-
-  if (req.method === "GET" && req.url === "/") {
+  if (req.method === "GET" && req.url === "/index.js") {
+    const script = fs.readFileSync("./index.js");
+    res.writeHead(200, {"Content-type": "text/javascript; charset=utf-8"});
+    res.end(script);
+  }
+  else if (req.method === "GET" && req.url === "/") {
     const html = fs.readFileSync("./index.html");
     res.writeHead(200, {"Content-type": "text/html; charset=utf-8"});
     res.end(html);
   }
   else if (req.method === "GET") {
+
+   /* console.log('work')
+    let obj = {"keek": "222", "lol": "1333"}
+    res.writeHead(200, {"Content-type": "application/json; charset=utf-8"});
+    res.end(JSON.stringify(obj));*/
     let url = req.url.split("/")[2];
     if(typeof url === 'undefined') url = 'pulpits';
     const connection = new sql.ConnectionPool(config);
@@ -40,7 +49,6 @@ const server = http.createServer((req, res) => {
       let match = false;
       for (let key in tableNames) {
         if (key === url) {
-          console.log('work 3')
           match = true;
           const req = new sql.Request(connection);
           req.query(`select * from ${tableNames[url]}`, (err, recordset) => {
